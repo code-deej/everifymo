@@ -41,15 +41,15 @@ function DeepLinkListener() {
   const navigate = useNavigate()
 
   useEffect(() => {
-console.log('DeepLinkListener mounted, waiting for token...')
+  console.log('DeepLinkListener mounted, waiting for token...') //ALISIN AFTER TESTING
 
     window.electronAPI.onDeepLinkToken((token) => {
-            console.log('Token received:', token)
+            console.log('Token received:', token) //ALISIN AFTER TESTING
 
       fetch(`http://localhost:8000/registration/validate/${token}`)
         .then((res) => res.json())
         .then((data) => {
-                    console.log('Validate response:', data)
+                    console.log('Validate response:', data) //ALISIN AFTER TESTING
 
           if (data.status === 'valid') {
             navigate('/user-registration', { state: { ...data, invite_token: token } })
@@ -70,7 +70,7 @@ export default function App(){
       <DeepLinkListener />
       <Routes>
         {/*CHANGE THIS LINE ONLY WHEN TESTING */}
-          <Route path='/' element={<SuperAdminUserManagement/>} />
+          <Route path='/' element={<LeaDashboard/>} />
 
         {/* AUTH ROUTES */}
         <Route path='/login' element={<Login />} />
