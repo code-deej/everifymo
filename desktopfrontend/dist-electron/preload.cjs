@@ -1,11 +1,1 @@
-//#region src/electron/preload.cjs
-var { contextBridge, ipcRenderer } = require("electron");
-contextBridge.exposeInMainWorld("electronAPI", {
-	onDeepLinkToken: (callback) => {
-		ipcRenderer.on("deep-link-token", (event, token) => callback(token));
-	},
-	removeDeepLinkToken: (callback) => {
-		ipcRenderer.removeListener("deep-link-token", callback);
-	}
-});
-//#endregion
+var{contextBridge:e,ipcRenderer:t}=require("electron");e.exposeInMainWorld(`electronAPI`,{onDeepLinkToken:e=>{let n=(t,n)=>e(n);return t.on(`deep-link-token`,n),()=>t.removeListener(`deep-link-token`,n)}});
